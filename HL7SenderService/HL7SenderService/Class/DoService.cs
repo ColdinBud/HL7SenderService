@@ -30,11 +30,19 @@ namespace HL7SenderService.Class
             {
                 IsWork = true;
 
+                /*
                 bool retValue = IsSocketConnected(objSocket);
                 if (!retValue)
                 {
                     SocketConnect();
                 }
+                if (!retValue)
+                {
+                    WriteEventLog("Error, An error occured, Exception : Socket Connection Refused.", "Error");
+                }
+                */
+
+                bool retValue = SocketConnect();
                 if (!retValue)
                 {
                     WriteEventLog("Error, An error occured, Exception : Socket Connection Refused.", "Error");
@@ -52,7 +60,7 @@ namespace HL7SenderService.Class
 
         private static void Working()
         {
-            WriteEventLog(pubService + " Working Start");
+            //WriteEventLog(pubService + " Working Start");
 
             try
             {
@@ -194,7 +202,7 @@ namespace HL7SenderService.Class
                 }
             }
 
-            WriteEventLog(pubService + " Working Stop");
+            //WriteEventLog(pubService + " Working Stop");
         }
 
         private static ReturnMessage SenderHL7(string _HL7Message)
@@ -239,7 +247,7 @@ namespace HL7SenderService.Class
                                 {
                                     Byte[] aryReceive = new Byte[1024];
 
-                                    objSocket.ReceiveTimeout = 10000;
+                                    objSocket.ReceiveTimeout = 15000;
                                     bytesSent = objSocket.Receive(aryReceive);
                                     Array.Resize(ref aryReceive, bytesSent);
 
@@ -360,7 +368,7 @@ namespace HL7SenderService.Class
                 TcpClient objTcpClient = new TcpClient();
                 IAsyncResult objAsynResult = objTcpClient.BeginConnect(Properties.Settings.Default.ServerIP, int.Parse(Properties.Settings.Default.ServerPort), null, null);
                 //只等10秒
-                objAsynResult.AsyncWaitHandle.WaitOne(10000, true);
+                objAsynResult.AsyncWaitHandle.WaitOne(15000, true);
 
                 if (!objAsynResult.IsCompleted)
                 {

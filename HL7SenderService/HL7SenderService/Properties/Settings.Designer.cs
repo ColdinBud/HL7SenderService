@@ -34,7 +34,7 @@ namespace HL7SenderService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\HL7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apoteca\\HL7\\")]
         public string ExportPath {
             get {
                 return ((string)(this["ExportPath"]));
@@ -43,7 +43,7 @@ namespace HL7SenderService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("172.16.47.186")]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
         public string ServerIP {
             get {
                 return ((string)(this["ServerIP"]));
@@ -52,7 +52,7 @@ namespace HL7SenderService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1222")]
+        [global::System.Configuration.DefaultSettingValueAttribute("23000")]
         public string ServerPort {
             get {
                 return ((string)(this["ServerPort"]));
